@@ -1,0 +1,24 @@
+
+:root {
+
+    /* Default text color */
+    --color-default-one: rgba(13, 88, 111, 0.9);
+    --color-default-two: #ffffff;
+    --color-default-three: #1a1f24;
+    --color-default-four: #0080ff;
+  
+    /* Defult links color */
+    --color-links: #2B7991;
+    --color-links-hover: #3AA3C4;
+
+    /* Button */
+    --hover-background-color: #4cb5c7;
+    --hover-border-color: 1px solid #fff;
+
+    --background-color: #0c8fa6;
+    --border-color: 1px solid #47b2e4;
+
+
+    --color-green: #059652;
+  }
+  
