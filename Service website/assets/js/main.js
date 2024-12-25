@@ -199,3 +199,20 @@
 
 
 })()
+
+
+
+// Navigation Part 
+function navigateTo(event, page) {
+  event.preventDefault(); // Prevent the default anchor click behavior
+  const url = `/${page}`; // Construct the new URL
+
+  // Change the URL without reloading the page
+  window.history.pushState({ page: page }, '', url);
+
+  // Optionally, scroll to the section
+  const section = document.getElementById(page);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
