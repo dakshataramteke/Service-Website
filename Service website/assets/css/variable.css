@@ -1,0 +1,24 @@
+
+:root {
+
+    /* Default text color */
+    --color-default-teal: rgba(13, 88, 111, 0.9);
+    --color-default-white: #ffffff;
+    --color-default-black: #1a1f24;
+    --color-default-blue: #0080ff;
+  
+    /* Defult links color */
+    --color-links-teal: #2B7991;
+    --color-links-light-blue: #3AA3C4;
+
+    /* Button */
+    --hover-background-blue: #4cb5c7;
+    --hover-border-white: 1px solid #fff;
+
+    --background-color-blue: #0c8fa6;
+    --border-color-blue: 1px solid #47b2e4;
+
+
+    --color-green: #059652;
+  }
+  

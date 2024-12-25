@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#Water-Form');
     if (form) {
+        const dateInput = document.querySelector('#date');
+        const timeInput = document.querySelector('#time');
+
+        // Open date picker on focus
+        dateInput.addEventListener('focus', () => {
+            dateInput.showPicker(); // This method is supported in some browsers
+        });
+
+        // Open time picker on focus
+        timeInput.addEventListener('focus', () => {
+            timeInput.showPicker(); // This method is supported in some browsers
+        });
+
+        
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
   
