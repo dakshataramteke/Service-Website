@@ -284,32 +284,3 @@ async function submitForm(name, email, subject, message) {
   }
 }
 
-
-
-/// ******
-document.getElementById('InstallationForm').addEventListener('submit', async function(e) {
-  e.preventDefault(); // Prevent the default form submission
-
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData.entries());
-
-  try {
-      const response = await fetch('http://localhost:3000/RO_Installation', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-          const result = await response.json();
-          alert('Data submitted successfully!');
-          // Optionally reset the form or handle the response
-      } else {
-          alert('Error submitting data.');
-      }
-  } catch (error) {
-      console.error('Error:', error);
-  }
-});

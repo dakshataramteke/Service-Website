@@ -73,9 +73,10 @@ function initializeForm(form, endpoint) {
         }
     });
 
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+    
         const name = form.querySelector('#name').value.trim();
         const phone = form.querySelector('#phone').value.trim();
         const email = form.querySelector('#email').value.trim();
@@ -85,13 +86,13 @@ function initializeForm(form, endpoint) {
         const date = dateInput.value; // Use dateInput directly
         const time = timeInput.value; // Get the raw time input value
         const service = form.querySelector('#service') ? form.querySelector('#service').value : null; // Optional service field
-
+    
         // Validation: Check if all required fields are filled
         if (!name || !phone || !email || !address || !date || !time) {
             alert('Please fill in all required fields.');
             return; // Stop the submission process
         }
-
+    
         // Check if the time is within the allowed range for Water-Form
         if (form.id === 'Water-Form') {
             const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/; // Matches HH:MM format
@@ -100,34 +101,34 @@ function initializeForm(form, endpoint) {
                 return; // Stop the submission process
             }
         }
-
+    
         // Pattern validation for name (only letters and whitespace)
         const namePattern = /^[a-zA-Z\s]+$/; // Changed to require at least one character
         if (!namePattern.test(name)) {
             alert("Invalid name. Please use only letters and whitespace.");
             return; // Stop the submission process
         }
-
+    
         // Pattern validation for email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             alert("Invalid Email. Please use a valid email address that includes '@' and a domain.");
             return; // Stop the submission process
         }
-
+    
         // Pattern validation for phone number (exactly 10 digits)
         const phonePattern = /^\d{10}$/; // Ensures exactly 10 digits
         if (!phonePattern.test(phone)) {
             alert('Invalid phone number. Please enter a valid 10-digit phone number.');
             return; // Stop the submission process
         }
-
+    
         // Confirmation alert before submitting
         const confirmSubmission = confirm('Are you sure you want to submit the data?');
         if (!confirmSubmission) {
             return; // Stop the submission process if the user cancels
         }
-
+    
         // Proceed to fetch
         try {
             const timeIn24HourFormat = convertTo24HourFormat(time); // Convert time if necessary
@@ -136,20 +137,22 @@ function initializeForm(form, endpoint) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, phone, email, address, model, description, date, time: timeIn24HourFormat, service }),
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
                 console.log('Service request received:', data);
-                alert('Your data has been saved successfully!');
+                alert('Your data has been saved successfully!'); // Show success message
                 form.classList.remove("was-validated");
-
+    
                 // Reset the form
                 form.reset();
             } else {
                 console.error('Error submitting request:', response.statusText);
+                alert('There was an error submitting your request. Please try again.'); // Show error message
             }
         } catch (error) {
             console.error('Request error:', error);
+            alert('There was an error processing your request. Please try again.'); // Show error message
         }
     });
 }
