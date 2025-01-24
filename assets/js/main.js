@@ -203,45 +203,49 @@
 // Contact US 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".submit-form");
-  if (form) {
-    form.addEventListener("submit", async (e) => {
+  // Contact Form Submission
+  const contactForm = document.querySelector(".submit-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const name = document.querySelector("#name").value.trim();
       const email = document.querySelector("#email").value.trim();
       const subject = document.querySelector("#subject").value.trim();
-      const message = document
-        .querySelector('textarea[name="message"]')
-        .value.trim();
+      const message = document.querySelector('textarea[name="message"]').value.trim();
 
       // Validation: Check if all required fields are filled
       if (!name || !email || !subject || !message) {
         alert("Please fill in all required fields.");
-        return; // Stop the submission process
+        return;
       }
 
       // Pattern validation for name (only letters and whitespace)
       const namePattern = /^[a-zA-Z\s]*$/;
       if (!namePattern.test(name)) {
         alert("Invalid name. Please use only letters and whitespace.");
-        return; // Stop the submission process
+        return;
       }
-      
+
       // For Email
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
-        alert(
-          "Invalid Email. Please use a valid email address that includes '@' and a domain."
-        );
-        return; // Stop the submission process
+        alert("Invalid Email. Please use a valid email address that includes '@' and a domain.");
+        return;
       }
 
       // Confirmation alert before submitting
-      const confirmSubmission = confirm(
-        "Are you sure you want to submit the data?"
-      );
-      if (!confirmSubmission) {
+      const confirmSubmission = await Swal.fire({
+        title: "Are you sure?",
+        text: "Are you sure to submit the data",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, save it"
+      });
+
+      if (!confirmSubmission.isConfirmed) {
         return; // Stop the submission process if the user cancels
       }
 
@@ -249,11 +253,51 @@ document.addEventListener("DOMContentLoaded", () => {
       await submitForm(name, email, subject, message);
     });
   } else {
-    console.error("Form not found");
+    console.error("Contact form not found");
+  }
+
+  // Subscribe Form Submission
+  const subscribeForm = document.getElementById('subscribe-form');
+  if (subscribeForm) {
+    subscribeForm.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent the default form submission
+
+      const email = document.getElementById('subscribe-email').value.trim(); // Ensure the correct ID is used
+
+      // Email validation regex
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      console.log(email);
+      // Send subscription request using Axios
+      try {
+        const response = await axios.post("http://localhost:3000/subscribe", {
+          email: email
+        });
+
+        if (response.status === 200 || response.status === 201) {
+          console.log("Subscribed with email:", email);
+          Swal.fire({
+            title: "Subscribed!",
+            text: "You have successfully subscribed.",
+            icon: "success"
+          });
+          subscribeForm.reset(); // Reset the form after successful subscription
+        } else {
+          console.error("Error subscribing:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Subscription request error:", error);
+      }
+    });
+  } else {
+    console.error("Subscribe form not found");
   }
 });
 
-// Function to handle form submission
+// Function to handle contact form submission
 async function submitForm(name, email, subject, message) {
   console.log("The Data from frontend is:", name, email, subject, message);
 
@@ -269,13 +313,16 @@ async function submitForm(name, email, subject, message) {
       const data = await response.json();
       console.log("Service request received:", data);
 
-      // Show alert message for successful submission
-      alert("Your Form submitted successfully!");
       const form = document.querySelector(".submit-form");
       form.classList.remove("was-validated");
 
       // Reset the form
       form.reset();
+      Swal.fire({
+        title: "Successfully",
+        text: "Your Data has been successfully saved",
+        icon: "success"
+      });
     } else {
       console.error("Error submitting request:", response.statusText);
     }
@@ -283,4 +330,3 @@ async function submitForm(name, email, subject, message) {
     console.error("Request error:", error);
   }
 }
-

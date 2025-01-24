@@ -145,6 +145,25 @@ db.query(sql, values, (err, result) => {
   });
   })
   
+
+  //Subscribe Button
+  app.post("/subscribe", (req, res) => {
+    console.log(req.body);
+    const { email } = req.body;
+  
+    // Insert the email into the database
+    let sql = "INSERT INTO Subscribe (email) VALUES (?)"; // Assuming your table is named 'Subscribe'
+    let values = [email]; // Use an array to pass the values
+  
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Error inserting data:", err);
+        return res.status(500).json({ error: "Database error" });
+      }
+      console.log("Data inserted successfully:", result);
+      return res.status(201).json({ message: "Data inserted successfully", result });
+    });
+  });
 // Start the server
 app.listen(port, () => {
   console.log(`Server started on ${port}`);

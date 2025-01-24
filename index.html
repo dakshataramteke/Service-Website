@@ -222,7 +222,7 @@
         </p>
       </div>
       <div class="col-lg-3 cta-btn-container text-center">
-        <a class="cta-btn align-middle" href="#contact">Contact Us Now</a>
+        <a class="cta-btn align-middle" href="https://wa.me/8484870974">Contact Us Now</a>
       </div>
     </div>
 
@@ -295,14 +295,14 @@
         <div class="col-lg-4">
 
           <div class="info">
-            <h3>Get in touch</h3>
+            <h3>Get in Touch</h3>
             <p>We are here to assist you with anything you need.</p>
 
             <div class="info-item d-flex">
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h4>Location:</h4>
-                <p>Omkar Nager, Nagpur, India.</p>
+                <p>Omkar Nagar, Nagpur, India.</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -330,10 +330,10 @@
           <form action="#" method="POST"class="submit-form">
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Enter your Name" required>
               </div>
               <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" required>
               </div>
             </div>
             <div class="form-group mt-3">
@@ -367,8 +367,8 @@
           <div class="col-lg-6">
             <h4>Subscribe to Our Newsletter</h4>
             <p>Stay updated with our latest news, offers, and insights delivered directly to your inbox.</p>
-            <form action="" method="post">
-              <input type="email" name="email" placeholder="Enter your email" required>
+            <form action="" method="post" id="subscribe-form">
+              <input type="email" id="subscribe-email" name="email" placeholder="Enter your email" required>
               <input type="submit" value="Subscribe">
             </form>
           </div>
@@ -395,22 +395,22 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#aboutus">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>  -->
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>  -->
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">RO Installation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">RO Maintenance</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Water Quality Testing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Emergency Repair</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Products</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="RO_Installation.html">RO Installation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="RO_Maintenance.html">RO Maintenance</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="Water_Quality_Testing.html">Water Quality Testing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="Emergency_Repair.html">Emergency Repair</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Products</a></li> -->
             </ul>
           </div>
 
@@ -421,7 +421,7 @@
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
               <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
@@ -431,9 +431,9 @@
     </div>
 
     <div class="container footer-bottom clearfix" style="display: flex; justify-content: center;">
-      <div class="copyright">
+      <!-- <div class="copyright">
         &copy; Copyright <strong><span>Quick Service</span></strong>. All Rights Reserved
-      </div>
+      </div> -->
     </div>
   </footer><!-- End Footer -->
 
@@ -448,6 +448,8 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

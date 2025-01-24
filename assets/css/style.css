@@ -89,6 +89,7 @@ Back to top button
 }
 
 .back-to-top:hover {
+  /* background: #6bc1e9; */
   background: #6bc1e9;
   color: #fff;
 }
@@ -178,7 +179,8 @@ Desktop Navigation
 }
 
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover>a {
-  color: var(--color-default-black)
+  color: var(--color-default-black);
+  /* color : #4cb5c7; */
 }
 
 .navbar .getstarted, .navbar .getstarted:focus {
@@ -266,7 +268,8 @@ Mobile Navigation
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover>a {
-  color: #04788d;
+  /* color: #04788d; */
+  color: #4cb5c7;
 }
 
 .navbar-mobile .getstarted, .navbar-mobile .getstarted:focus {
@@ -1057,7 +1060,7 @@ Contact
 .contact .submit-form input[type=text]:focus,
 .contact .submit-form input[type=email]:focus,
 .contact .submit-form textarea:focus {
-  border-color: var(--hover-border-white);
+  border-color:  var(--color-default-teal);
 }
 
 .contact .submit-form input[type=text],
@@ -1079,7 +1082,7 @@ Contact
   color: rgb(255, 255, 255);
   background-color: var(--background-color-blue);
   transition: 0.4s;
-  border-radius: 25px;
+  border-radius: 30px;
   border: var(--border-color-blue);
 }
 
@@ -1259,7 +1262,7 @@ Footer
 }
 
 #footer .footer-top .social-links a:hover {
-  background: var(--hover-background--blue);
+  background: var(--hover-background-blue);
   color:var(--color-default-white);
   text-decoration: none;
 }
@@ -1452,3 +1455,9 @@ Confirmation
 .thank-you{
     color: green;
   }
+
+
+/* For Success Swal  */
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+  background-color: #075664 !important;
+}
